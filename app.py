@@ -5,7 +5,7 @@ import streamlit as st
 import numpy as np
 
 st.header('Image Classification Model')
-model = load_model('D:\PythonProject\img-class\Image_classify.keras')
+model = load_model("Image_classify.keras")
 data_cat = ['apple',
  'banana',
  'beetroot',
@@ -56,4 +56,5 @@ if st.button('Predict'):
     score = tf.nn.softmax(predict)
     st.image(image, width=200)
     st.write('Veg/Fruit in image is ' + data_cat[np.argmax(score)])
+
     st.write('With accuracy of ' + str(np.max(score)*100))
