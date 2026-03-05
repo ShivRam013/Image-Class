@@ -44,7 +44,7 @@ data_cat = ['apple',
  'watermelon']
 img_height = 180
 img_width = 180
-image =st.text_input('Enter Image name')
+image =st.file_uploader('uplode Image ')
 
 if st.button('Predict'):
 
@@ -62,5 +62,6 @@ if st.button('Predict'):
 
     except:
         st.error("please give a valid image id")
+
 
 
