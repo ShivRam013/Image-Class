@@ -47,14 +47,20 @@ img_width = 180
 image =st.text_input('Enter Image name')
 
 if st.button('Predict'):
-    image_load = tf.keras.utils.load_img(image, target_size=(img_height,img_width))
-    img_arr = tf.keras.utils.array_to_img(image_load)
-    img_bat=tf.expand_dims(img_arr,0)
 
-    predict = model.predict(img_bat)
+    try:
+        image_load = tf.keras.utils.load_img(image, target_size=(img_height, img_width))
+        img_arr = tf.keras.utils.img_to_array(image_load)
+        img_bat = tf.expand_dims(img_arr, 0)
 
-    score = tf.nn.softmax(predict)
-    st.image(image, width=200)
-    st.write('Veg/Fruit in image is ' + data_cat[np.argmax(score)])
+        predict = model.predict(img_bat)
+        score = tf.nn.softmax(predict)
 
-    st.write('With accuracy of ' + str(np.max(score)*100))
+        st.image(image, width=200)
+        st.write('Veg/Fruit in image is ' + data_cat[np.argmax(score)])
+        st.write('With accuracy of ' + str(np.max(score)*100))
+
+    except:
+        st.error("please give a valid image id")
+
+
