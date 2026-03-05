@@ -4,8 +4,8 @@ from tensorflow.keras.models import  load_model
 import streamlit as st
 import numpy as np
 
-st.header('Image Classification Model')
-st.header('For Fruit & Veggies')
+st.header('Fruit & Veggies Image Classification Model')
+
 model = load_model("Image_classify.keras")
 data_cat = ['apple',
  'banana',
@@ -63,6 +63,7 @@ if st.button('Predict'):
 
     except:
         st.error("please give a valid image id")
+
 
 
 
